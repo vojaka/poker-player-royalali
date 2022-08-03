@@ -1,12 +1,12 @@
 import { GameState } from './GameState'
 
 export class Player {
-  public betRequest(gameState: GameState, betCallback: (bet: number) => void): void {
+  public betRequest(_gameState: GameState, betCallback: (bet: number) => void): void {
     betCallback(0)
   }
 
-  public showdown(gameState: GameState): void {
-
+  public showdown(_gameState: GameState): void {
+    // for implementing learning algorithms only
   }
 }
 
