@@ -4,7 +4,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "tsc-watch --onSuccess \"node out/index.js\""
+    "postinstall": "tsc -p .",
+    "start": "node out/index.js",
+    "dev": "tsc-watch --onSuccess \"node out/index.js\""
   },
   "dependencies": {
     "express": "^4.17.2",
