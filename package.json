@@ -9,13 +9,13 @@
         "build": "./node_modules/.bin/typings i && ./node_modules/.bin/tsc -p ./"
     },
     "dependencies": {
-        "body-parser": "^1.19.1",
-        "express": "^4.17.2",
-        "typescript": "^4.5.4",
-        "typings": "0.6.10"
+        "body-parser": "*",
+        "express": "*",
+        "typescript": "*",
+        "typings": "*"
     },
     "engines": {
-        "node": "17.1.0",
-        "npm": "6.14.8"
+        "node": "18.12.1",
+        "npm": "9.1.1"
     }
 }
