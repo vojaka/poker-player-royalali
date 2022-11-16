@@ -25,13 +25,13 @@ export class Evaluator {
     public getHandRank(cards: Card[]) {
         const requestOptions = {
             method: 'GET',
-            headers: { 'Content-Type': 'text/html;charset=utf-8' },
+            headers: { 'Content-Type': 'application/json' },
         };
         const reqUrl = 'http://rainman.leanpoker.org/rank?cards=[' + cards.map((elem) => JSON.stringify(elem)) + ']';
         console.log(reqUrl)
         return fetch(reqUrl, requestOptions)
             .then((response) => {
-                console.log("RESPONSE FROM API:", response.json())
+                console.log("RESPONSE FROM API:", response, typeof response)
                 return response.json();
             })
             .then((responseData: RankingsResponse) => {
