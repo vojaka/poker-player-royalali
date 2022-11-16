@@ -3,7 +3,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { Player } from './Player';
 
-const VERSION = "Default TypeScript folding player";
+const VERSION = "RoyalAli v00";
 
 const app = express();
 const player = new Player();
@@ -12,7 +12,7 @@ const player = new Player();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', ({}, res) => res.send(200, 'OK'));
+app.get('/', ({ }, res) => res.send(200, 'OK'));
 
 app.post('/', (req, res) => {
     if (req.body.action === 'bet_request') {
