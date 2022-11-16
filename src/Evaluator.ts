@@ -26,10 +26,11 @@ export class Evaluator {
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({'cards': cards})
         };
         console.log("Get Rank with parameters", requestOptions)
-        return fetch('http://rainman.leanpoker.org/rank', requestOptions)
+        return fetch('http://rainman.leanpoker.org/rank?' + new URLSearchParams({
+            cards: JSON.stringify(cards),
+        }))
             .then((response) => response.json())
             .then((responseData: RankingsResponse) => {
                 return responseData
