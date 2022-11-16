@@ -19,6 +19,9 @@ export class Evaluator {
     }
 
     public getHandValue(ranking: RankingsResponse): number {
+        if (!ranking) {
+            return Math.random() * 10
+        }
         return 0.8 * ranking.rank + 0.1 * ranking.value + 0.1 * ranking.second_value
     }
 
