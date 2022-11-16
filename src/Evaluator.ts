@@ -1,4 +1,5 @@
 import {Card} from "./interface/Card";
+import fetch from 'node-fetch';
 export class Evaluator {
 
     public evaluate(cards_in_hand: Card[]): number {
