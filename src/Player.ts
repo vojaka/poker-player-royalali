@@ -1,8 +1,8 @@
 import { GameState } from "./interface/GameState";
 
 export class Player {
-  public betRequest(gameState: GameState, betCallback: (bet: number) => void): void {
-    
+    public betRequest(gameState: GameState, betCallback: (bet: number) => void): void {
+
     const call = gameState.current_buy_in - gameState.players[gameState.in_action]["bet"];
     betCallback(0);
   }
