@@ -32,10 +32,10 @@ export class Evaluator {
         return fetch(reqUrl, requestOptions)
             .then((response) => {
                 console.log("RESPONSE FROM API:", response, typeof response)
-                return response.json();
+                return response.text();
             })
-            .then((responseData: RankingsResponse) => {
-                return responseData
+            .then((responseData) => {
+                return JSON.parse(responseData)
             }).catch(error => console.warn(error))
     }
 }
