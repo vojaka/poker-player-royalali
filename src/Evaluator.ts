@@ -30,8 +30,9 @@ export class Evaluator {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         };
-        return fetch('http://rainman.leanpoker.org/rank?cards=[' + cards.map((elem) => JSON.stringify(elem)) + ']',
-        requestOptions)
+        const reqUrl = 'http://rainman.leanpoker.org/rank?cards=[' + cards.map((elem) => JSON.stringify(elem)) + ']';
+        console.log(reqUrl)
+        return fetch(reqUrl, requestOptions)
             .then((response) => {
                 console.log("RESPONSE FROM API:", response, typeof response)
                 return response.json();
