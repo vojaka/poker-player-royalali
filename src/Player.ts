@@ -60,7 +60,7 @@ export class Player {
 
     const evaluation = evaluator.evaluate_hand(gameState.players[gameState.in_action].hole_cards, gameState.community_cards)
     console.log("Evaluation number:", evaluation)
-    if (evaluation > 4) {
+    if (evaluation && evaluation > 4) {
       action = Actions.CALL;
     } else {
       action = Actions.ALL_IN;
