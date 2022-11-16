@@ -9,19 +9,16 @@ export class Evaluator {
         return Math.random()
     }
 
-    public evaluate_hand(cards_in_hand: Card[], cards_on_table?: Card[]): number {
+    public evaluate_hand(cards_in_hand: Card[], cards_on_table?: Card[]): number | false {
         let rankings: any;
         const cards: Card[] = [...cards_in_hand, ...cards_on_table!]
         this.getHandRank(cards).then(response =>
             rankings = response)
         console.log("Rankings response:", rankings)
-        return this.getHandValue(rankings)
+        return rankings ? this.getHandValue(rankings) : false;
     }
 
     public getHandValue(ranking: RankingsResponse): number {
-        if (!ranking) {
-            return Math.random() * 10
-        }
         return 0.8 * ranking.rank + 0.1 * ranking.value + 0.1 * ranking.second_value
     }
 
