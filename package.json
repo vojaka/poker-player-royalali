@@ -11,7 +11,6 @@
     "dependencies": {
         "body-parser": "*",
         "express": "*",
-        "node-fetch": "3.3.0",
         "typescript": "*",
         "typings": "*"
     },
