@@ -1,3 +1,4 @@
+import e = require("express");
 import { Evaluator } from "./Evaluator";
 import { Card } from "./interface/Card";
 import { GameState } from "./interface/GameState";
@@ -51,6 +52,12 @@ export class Player {
     // })
   }
 
+  public getNumberOfOpponents(gameState: GameState): number {
+    return gameState.players.filter((elem: any) => {
+      return elem.status === 'out';
+    }).length;
+  }
+
   public betRequest(gameState: GameState, betCallback: (bet: number) => void): void {
     console.log('aaaabbb');
     const evaluator = new Evaluator();
@@ -58,13 +65,18 @@ export class Player {
 
     let action = Actions.FOLD;
 
-    const evaluation = evaluator.evaluate_hand(gameState.players[gameState.in_action].hole_cards, gameState.community_cards)
-    console.log("Evaluation number:", evaluation)
-    if (evaluation && evaluation > 4) {
-      action = Actions.CALL;
-    } else {
+    // const evaluation = evaluator.evaluate_hand(gameState.players[gameState.in_action].hole_cards, gameState.community_cards)
+    
+    if (this.getNumberOfOpponents(gameState) === 2) {
       action = Actions.ALL_IN;
     }
+    
+    // console.log("Evaluation number:", evaluation)
+    // if (evaluation && evaluation > 4) {
+    //   action = Actions.CALL;
+    // } else {
+    //   action = Actions.ALL_IN;
+    // }
 
     betCallback(this.calculateAction(action, gameState));
   }
