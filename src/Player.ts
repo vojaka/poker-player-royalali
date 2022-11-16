@@ -54,7 +54,7 @@ export class Player {
 
   public getNumberOfOpponents(gameState: GameState): number {
     return gameState.players.filter((elem: any) => {
-      return elem.status === 'out';
+      return elem.status === 'active';
     }).length;
   }
 
@@ -66,6 +66,10 @@ export class Player {
     let action = Actions.FOLD;
 
     // const evaluation = evaluator.evaluate_hand(gameState.players[gameState.in_action].hole_cards, gameState.community_cards)
+
+    if (gameState.players[gameState.in_action]["bet"] !== 0) {
+      action = Actions.CALL;
+    }
     
     if (this.getNumberOfOpponents(gameState) === 2) {
       action = Actions.ALL_IN;
