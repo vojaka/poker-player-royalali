@@ -1,7 +1,5 @@
 import {Card} from "./interface/Card";
-import * as express from 'express';
 export class Evaluator {
-    private app = express();
 
     public evaluate(cards_in_hand: Card[]): number {
         if (cards_in_hand[0].rank === cards_in_hand[1].rank) {
@@ -11,7 +9,12 @@ export class Evaluator {
         this.getHandRank(cards_in_hand).then(response =>
             rankings = response)
         console.log(rankings)
+        console.log(this.getHandValue(rankings))
         return Math.random()
+    }
+
+    public getHandValue(ranking: any): number {
+        return 0.8 * ranking.rank + 0.1 * ranking.first_value + 0.1 * ranking.second_value
     }
 
     public getHandRank(cards: Card[]): any {
@@ -26,5 +29,4 @@ export class Evaluator {
                 return responseData
             }).catch(error => console.warn(error))
     }
-
-    }
+}
