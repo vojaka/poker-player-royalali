@@ -32,7 +32,7 @@ action=bet_request&game_state={
                     "suit": "hearts"
                 },
                 {
-                    "rank": "K",
+                    "rank": "6",
                     "suit": "spades"
                 }
             ]
