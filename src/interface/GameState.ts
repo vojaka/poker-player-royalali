@@ -3,6 +3,8 @@ import { Card } from "./Card";
 
 export interface GameState {
     bet_index: number
+    current_buy_in: number
+    in_action: number
     community_cards: Card[]
     dealer: number
     game_id: string
