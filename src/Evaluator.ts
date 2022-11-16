@@ -23,9 +23,9 @@ export class Evaluator {
 
     public getHandRank(cards: Card[]): any {
         const requestOptions = {
-            method: 'POST',
+            method: 'GET',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(cards)
+            body: {'cards': JSON.stringify(cards)}
         };
         console.log("Get Rank with parameters", requestOptions)
         return fetch('http://rainman.leanpoker.org/rank', requestOptions)
