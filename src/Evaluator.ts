@@ -1,5 +1,4 @@
 import { Card } from "./interface/Card";
-import {response} from "express";
 export class Evaluator {
 
     public evaluate(cards_in_hand: Card[]): number {
@@ -14,7 +13,7 @@ export class Evaluator {
         const cards: Card[] = [...cards_in_hand, ...cards_on_table!]
         this.getHandRank(cards).then(response =>
             rankings = response)
-        console.log("Rankings response:", response)
+        console.log("Rankings response:", rankings)
         return this.getHandValue(rankings)
     }
 
