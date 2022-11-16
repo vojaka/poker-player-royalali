@@ -25,7 +25,7 @@ export class Evaluator {
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
-            body: {'cards': JSON.stringify(cards)}
+            body: JSON.stringify({'cards': JSON.stringify(cards)})
         };
         console.log("Get Rank with parameters", requestOptions)
         return fetch('http://rainman.leanpoker.org/rank', requestOptions)
