@@ -51,18 +51,17 @@ export class Player {
   public betRequest(gameState: GameState, betCallback: (bet: number) => void): void {
     console.log('aaaabbb');
     const evaluator = new Evaluator();
-    const random = Math.random();
     const currentBetAmount = gameState.players[gameState.in_action]["bet"];
 
     let action = Actions.FOLD;
 
     const evaluation = evaluator.evaluate_hand(gameState.players[gameState.in_action].hole_cards, gameState.community_cards)
-
+    console.log("Evaluation number:", evaluation)
     if (evaluation > 4) {
       action = Actions.CALL;
     } else {
       action = Actions.FOLD;
-    };
+    }
 
     betCallback(this.calculateAction(action, gameState));
   }
@@ -70,6 +69,6 @@ export class Player {
   public showdown(gameState: GameState): void {
 
   }
-};
+}
 
 export default Player;
