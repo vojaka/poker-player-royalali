@@ -12,8 +12,13 @@ export class Evaluator {
     public evaluate_hand(cards_in_hand: Card[], cards_on_table?: Card[]): number | false {
         let rankings: any;
         const cards: Card[] = [...cards_in_hand, ...cards_on_table!]
-        this.getHandRank(cards).then(response =>
-            rankings = response)
+        try {
+            this.getHandRank(cards).then(response =>
+                rankings = response)
+        } catch (e) {
+            console.warn(e)
+        }
+
         console.log("Rankings response:", rankings)
         return rankings ? this.getHandValue(rankings) : false;
     }
