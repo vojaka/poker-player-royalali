@@ -1,4 +1,4 @@
-import {Card} from "./interface/Card";
+import { Card } from "./interface/Card";
 export class Evaluator {
 
     public evaluate(cards_in_hand: Card[]): number {
@@ -8,9 +8,9 @@ export class Evaluator {
         return Math.random()
     }
 
-    public evaluate_hand(cards_in_hand: Card[], cards_on_table: Card[]): number {
+    public evaluate_hand(cards_in_hand: Card[], cards_on_table?: Card[]): number {
         let rankings: any;
-        const cards: Card[] = [...cards_in_hand, ...cards_on_table]
+        const cards: Card[] = [...cards_in_hand, ...cards_on_table!]
         this.getHandRank(cards).then(response =>
             rankings = response)
         return this.getHandValue(rankings)
