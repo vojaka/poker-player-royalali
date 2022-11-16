@@ -6,6 +6,7 @@ enum Actions {
   FOLD,
   CALL,
   RAISE,
+  ALL_IN,
 }
 
 export class Player {
@@ -21,6 +22,8 @@ export class Player {
         return gameState.current_buy_in - currentBetAmount;
       case Actions.RAISE:
         return gameState.current_buy_in - currentBetAmount + gameState.minimum_raise;
+      case Actions.ALL_IN:
+        return gameState.players[gameState.in_action]["stack"];
       default:
         return 0;
     }
@@ -60,7 +63,7 @@ export class Player {
     if (evaluation > 4) {
       action = Actions.CALL;
     } else {
-      action = Actions.FOLD;
+      action = Actions.ALL_IN;
     }
 
     betCallback(this.calculateAction(action, gameState));
