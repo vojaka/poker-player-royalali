@@ -1,4 +1,5 @@
 import { Card } from "./interface/Card";
+import { RankingsResponse } from "./interface/RankingResponse";
 export class Evaluator {
 
     public evaluate(cards_in_hand: Card[]): number {
@@ -17,11 +18,11 @@ export class Evaluator {
         return this.getHandValue(rankings)
     }
 
-    public getHandValue(ranking: any): number {
-        return 0.8 * ranking.rank + 0.1 * ranking.first_value + 0.1 * ranking.second_value
+    public getHandValue(ranking: RankingsResponse): number {
+        return 0.8 * ranking.rank + 0.1 * ranking.value + 0.1 * ranking.second_value
     }
 
-    public getHandRank(cards: Card[]): any {
+    public getHandRank(cards: Card[]) {
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -30,7 +31,7 @@ export class Evaluator {
         console.log("Get Rank with parameters", requestOptions)
         return fetch('http://rainman.leanpoker.org/rank', requestOptions)
             .then((response) => response.json())
-            .then((responseData) => {
+            .then((responseData: RankingsResponse) => {
                 return responseData
             }).catch(error => console.warn(error))
     }
