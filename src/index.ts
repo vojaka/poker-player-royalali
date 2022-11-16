@@ -3,7 +3,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { Player } from './Player';
 
-const VERSION = "RoyalAli v0";
+const VERSION = "RoyalAli v00";
 
 const app = express();
 const player = new Player();
